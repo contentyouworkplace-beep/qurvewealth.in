@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ── Tailwind v4: CSS-based theme config ─────────────────── */
+@theme {
+  /* Brand colours — Forest Green palette (matched to logo) */
+  --color-navy:          #132B08;
+  --color-navy-mid:      #1E4010;
+  --color-navy-light:    #2D5A1A;
+  --color-gold:          #C8960C;
+  --color-gold-light:    #E2B53A;
+  --color-gold-pale:     #FBF3DC;
+  --color-qurve-emerald: #22C55E;
+  --color-qurve-emerald-bg: #DCFCE7;
+  --color-off-white:     #F7FAF5;
+  --color-border:        #D4E8CC;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Typography — mapped from next/font CSS vars */
+  --font-sans:  var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Animations */
+  --animate-float-y:      floatY 3s ease-in-out infinite;
+  --animate-float-delay:  floatY 3s ease-in-out 0.8s infinite;
+  --animate-scroll-left:  scrollLeft 22s linear infinite;
+  --animate-pulse2:       pulse2 2s ease infinite;
+
+  @keyframes floatY {
+    0%,100% { transform: translateY(0px); }
+    50%      { transform: translateY(-8px); }
+  }
+  @keyframes scrollLeft {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes pulse2 {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(1.4); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html  { scroll-behavior: smooth; }
+body  { font-family: var(--font-sans); overflow-x: hidden; color: #2D3B2A; }
+
+/* ── Utilities ────────────────────────────────────────────── */
+@layer utilities {
+  .font-serif  { font-family: var(--font-serif); }
+  .text-balance { text-wrap: balance; }
+
+  .gradient-navy {
+    background: linear-gradient(135deg, #0D2006 0%, #1A3C0D 50%, #132B08 100%);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #C8960C, #E2B53A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glass {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .mask-fade {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .shadow-gold  { box-shadow: 0 8px 32px rgba(200,150,12,0.30); }
+  .shadow-glow  { box-shadow: 0 0 0 3px rgba(200,150,12,0.20); }
+  .ring-gold    { outline: 3px solid rgba(200,150,12,0.4); }
+
+  /* Logo filter helpers */
+  .logo-white { filter: brightness(0) invert(1); }
+
+  /* progress bars */
+  .progress-bar {
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #D4E8CC;
+  }
 }
