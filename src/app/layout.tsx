@@ -57,13 +57,13 @@ export const metadata: Metadata = {
     title: "Mutual Fund Advisor India | SIP Investment | Qurve Wealth",
     description:
       "Qurve Wealth — AMFI Registered Mutual Fund Advisor (ARN-356292). SIP investment advice, quant-driven mutual fund baskets, and data-backed portfolio strategies for investors across India.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Qurve Wealth — Mutual Fund Advisor India" }],
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Qurve Wealth — Mutual Fund Advisor India" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mutual Fund Advisor India | SIP Investment | Qurve Wealth",
     description: "AMFI Registered Mutual Fund Advisor (ARN-356292). Quant-driven SIP & mutual fund baskets across India.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image.png"],
   },
   alternates: {
     canonical: "https://qurvewealth.in",
@@ -77,9 +77,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
   },
   manifest: "/manifest.webmanifest",
-  verification: {
-    google: "your-google-verification-code",
-  },
+  verification: {},
 };
 
 const organizationSchema = {
