@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import FaqAccordion from "@/components/FaqAccordion";
+import WhatsAppForm from "@/components/WhatsAppForm";
 
 const howItWorks = [
   { step: "01", title: "Tell Us Your Goal", desc: "Share your investment horizon, risk comfort, and what you're saving for." },
@@ -101,9 +102,12 @@ export default function InvestNowPage() {
             Your Journey to<br />
             <span className="gradient-text">Smarter Investing</span>
           </h1>
-          <p className="text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-300 max-w-xl mx-auto leading-relaxed mb-8">
             Fill in the form below and our team will reach out within 1 business day. Zero pressure. Just honest guidance.
           </p>
+          <div className="max-w-sm mx-auto">
+            <WhatsAppForm light />
+          </div>
         </div>
       </section>
 
@@ -141,8 +145,8 @@ export default function InvestNowPage() {
                   <div className="w-10 h-10 rounded-xl bg-gold-pale flex items-center justify-center text-xl flex-shrink-0">📧</div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Email</div>
-                    <a href="mailto:hello@qurvewealth.com" className="font-semibold text-navy hover:text-gold transition-colors">
-                      hello@qurvewealth.com
+                    <a href="mailto:hello@qurvewealth.in" className="font-semibold text-navy hover:text-gold transition-colors">
+                      hello@qurvewealth.in
                     </a>
                   </div>
                 </div>

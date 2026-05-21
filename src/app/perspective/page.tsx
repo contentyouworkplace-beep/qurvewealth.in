@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import WhatsAppForm from "@/components/WhatsAppForm";
 
 const categories = [
   { id: "all", label: "All Topics" },
@@ -157,9 +158,12 @@ export default function PerspectivePage() {
             Stay Ahead of the Curve,<br />
             <span className="gradient-text">with Qurve</span>
           </h1>
-          <p className="text-lg text-slate-300 max-w-xl mx-auto">
+          <p className="text-lg text-slate-300 max-w-xl mx-auto mb-8">
             Ideas that move your money forward. Research, analysis, and perspectives on markets, economy, and investor behaviour.
           </p>
+          <div className="max-w-sm mx-auto">
+            <WhatsAppForm light />
+          </div>
         </div>
       </section>
 

@@ -1,7 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import FaqAccordion from "@/components/FaqAccordion";
+import WhatsAppForm from "@/components/WhatsAppForm";
+import { CITIES } from "@/lib/cities";
+import { BLOG_POSTS } from "@/lib/blog-posts";
+
+export const metadata: Metadata = {
+  title: "Mutual Fund Advisor India | SIP Investment Plans | Qurve Wealth",
+  description:
+    "Mutual fund advisor India — Qurve Wealth (AMFI ARN-356292) offers quant-driven SIP investment plans, data-backed mutual fund baskets, and expert advice for investors across India. Start with ₹0 minimum.",
+  keywords: ["mutual fund advisor India", "SIP investment plans India", "mutual fund advisor Pune", "AMFI registered advisor", "quant mutual fund India"],
+  alternates: { canonical: "https://qurvewealth.in" },
+  openGraph: {
+    title: "Mutual Fund Advisor India | SIP Investment Plans | Qurve Wealth",
+    description: "Mutual fund advisor India — Qurve Wealth (AMFI ARN-356292). Quant-driven SIP investment plans and data-backed mutual fund baskets for investors across India.",
+    url: "https://qurvewealth.in",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Qurve Wealth" }],
+  },
+};
 
 const partners = [
   { name: "HDFC Mutual Fund",     logo: "/logos/HDFC.png" },
@@ -153,7 +171,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="gradient-navy relative overflow-hidden pt-24 pb-20 px-6 min-h-screen flex items-center">
+      <section className="gradient-hero relative overflow-hidden pt-24 pb-20 px-6 min-h-screen flex items-center">
         {/* Background decoration */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gold/8 blur-3xl" />
@@ -210,41 +228,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right — Hero Visual */}
+          {/* Right — WhatsApp Form */}
           <div className="relative flex justify-center lg:justify-end">
-            {/* Floating badges */}
-            <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-2 text-sm font-semibold text-white animate-float-y z-20">
-              📈 Systematic Rebalancing
-            </div>
-            <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-2 text-sm font-semibold text-white animate-float-delay z-20">
-              🔄 Cycle-Aware Strategy
-            </div>
-
-            {/* Card */}
-            <div className="glass rounded-2xl p-6 w-full max-w-sm shadow-gold">
-              <div className="text-xs text-slate-400 font-medium mb-4 uppercase tracking-wider">Qurve Smart Baskets</div>
-              <div className="space-y-4">
-                {[
-                  { icon: "🌦️", name: "All Weather", risk: "Moderate", return: "+12.4%", color: "text-blue-400" },
-                  { icon: "🛡️", name: "Smart Debt", risk: "Low", return: "+8.2%", color: "text-qurve-emerald" },
-                  { icon: "🚀", name: "Growth", risk: "High", return: "+18.7%", color: "text-gold" },
-                ].map(b => (
-                  <div key={b.name} className="flex items-center justify-between bg-white/5 rounded-xl p-4">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{b.icon}</span>
-                      <div>
-                        <div className="text-white font-semibold text-sm">{b.name}</div>
-                        <div className="text-xs text-slate-400">{b.risk} Risk</div>
-                      </div>
-                    </div>
-                    <div className={`font-bold text-sm ${b.color}`}>{b.return}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-500">
-                <span>1Y Indicative Returns</span>
-                <span className="text-gold">Past performance ≠ guarantee</span>
-              </div>
+            <div className="w-full max-w-sm">
+              <WhatsAppForm light />
             </div>
           </div>
         </div>
@@ -449,6 +436,97 @@ export default function Home() {
             <Link href="/invest-now" className="text-navy font-semibold hover:text-gold transition-colors underline underline-offset-4">
               Have more questions? Talk to us →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Latest Blog Posts ─────────────────────────────────── */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <AnimateOnScroll>
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-gold">Qurve Perspective</span>
+                <h2 className="text-4xl font-bold text-navy mt-3 font-serif">Latest Investing Insights</h2>
+              </div>
+              <Link href="/blog" className="hidden md:flex items-center gap-1 text-navy font-semibold hover:text-gold transition-colors text-sm">
+                View All Articles →
+              </Link>
+            </div>
+          </AnimateOnScroll>
+          <div className="grid md:grid-cols-3 gap-8">
+            {BLOG_POSTS.slice(0, 3).map((post, i) => (
+              <AnimateOnScroll key={post.slug} delay={i * 0.08}>
+                <Link href={`/blog/${post.slug}`} className="group block h-full">
+                  <article className="bg-off-white rounded-2xl border border-border hover:border-gold/40 hover:-translate-y-1 hover:shadow-gold transition-all duration-300 p-7 h-full flex flex-col">
+                    <span className="text-xs font-bold uppercase tracking-wider text-gold mb-4">{post.category}</span>
+                    <h3 className="font-bold text-navy text-lg leading-snug mb-3 group-hover:text-navy-mid flex-1">{post.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed mb-5 line-clamp-2">{post.excerpt}</p>
+                    <span className="text-sm font-semibold text-navy group-hover:text-gold transition-colors">Read Article →</span>
+                  </article>
+                </Link>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Cities We Serve ───────────────────────────────────── */}
+      <section className="py-20 px-6 bg-off-white border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <AnimateOnScroll>
+            <div className="text-center mb-12">
+              <span className="text-xs font-semibold uppercase tracking-widest text-gold">Pan-India Coverage</span>
+              <h2 className="text-4xl font-bold text-navy mt-3 mb-4 font-serif">
+                Mutual Fund Advisor Across India
+              </h2>
+              <p className="text-slate-500 max-w-2xl mx-auto">
+                Qurve Wealth serves investors in 200+ cities across India. Fully digital. No branch visits. AMFI Registered ARN-356292.
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          {/* Metro Cities */}
+          <div className="mb-10">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">Metro & Tier 1 Cities</div>
+            <div className="flex flex-wrap gap-3">
+              {CITIES.filter(c => c.tier === 1).map(city => (
+                <Link key={city.slug} href={`/mutual-fund-advisor/${city.slug}`}
+                  className="inline-flex items-center gap-1.5 bg-white border-2 border-navy/20 hover:border-gold/50 text-navy font-semibold text-sm px-5 py-2.5 rounded-xl hover:shadow-gold hover:-translate-y-0.5 transition-all duration-200">
+                  Mutual Fund Advisor {city.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Tier 2 Cities */}
+          <div className="mb-10">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">Large Cities</div>
+            <div className="flex flex-wrap gap-2.5">
+              {CITIES.filter(c => c.tier === 2).map(city => (
+                <Link key={city.slug} href={`/mutual-fund-advisor/${city.slug}`}
+                  className="inline-flex bg-white border border-border hover:border-gold/30 text-slate-600 hover:text-navy text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200">
+                  {city.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* More cities pill links */}
+          <div>
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">More Cities</div>
+            <div className="flex flex-wrap gap-2">
+              {CITIES.filter(c => c.tier === 3).slice(0, 30).map(city => (
+                <Link key={city.slug} href={`/mutual-fund-advisor/${city.slug}`}
+                  className="text-xs bg-white border border-border text-slate-500 hover:text-navy hover:border-navy/20 px-3 py-1.5 rounded-full transition-all duration-200">
+                  {city.name}
+                </Link>
+              ))}
+              <Link href="/mutual-fund-advisor"
+                className="text-xs bg-navy text-white font-bold px-4 py-1.5 rounded-full hover:bg-navy-mid transition-all duration-200">
+                + View All 200+ Cities →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

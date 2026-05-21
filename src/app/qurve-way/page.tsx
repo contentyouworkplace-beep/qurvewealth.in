@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import WhatsAppForm from "@/components/WhatsAppForm";
+
+export const metadata: Metadata = {
+  title: "Qurve Way — Quant-Driven Mutual Fund Investing Philosophy | Qurve Wealth",
+  description: "Qurve Way — our quant-driven mutual fund investing philosophy. Data over emotion, systematic rebalancing, and transparent mutual fund strategies for long-term wealth creation in India.",
+  keywords: ["quant mutual fund investing India", "data driven mutual fund", "systematic mutual fund strategy", "Qurve Way investing"],
+  alternates: { canonical: "https://qurvewealth.in/qurve-way" },
+  openGraph: {
+    title: "Qurve Way — Quant-Driven Mutual Fund Investing Philosophy | Qurve Wealth",
+    description: "Qurve Way — data-driven mutual fund investing philosophy. Systematic, quant-based strategies for Indian investors.",
+    url: "https://qurvewealth.in/qurve-way",
+  },
+};
 
 const pillars = [
   {
@@ -98,9 +112,12 @@ export default function QurveWayPage() {
             Where Data Shapes<br />
             <span className="gradient-text">Every Allocation</span>
           </h1>
-          <p className="text-lg text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-lg text-slate-300 max-w-2xl leading-relaxed mb-8">
             At Qurve, we believe that consistent wealth creation is a function of process, not prediction. Our investment philosophy is built on five non-negotiable pillars — all driven by data, not instinct.
           </p>
+          <div className="max-w-sm">
+            <WhatsAppForm light />
+          </div>
         </div>
       </section>
 

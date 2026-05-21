@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1C5E2E"/>
+      <stop offset="60%" style="stop-color:#2D7A42"/>
+      <stop offset="100%" style="stop-color:#1C5E2E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#bg)"/>
+
+  <!-- Subtle circle ring (gold) -->
+  <circle cx="256" cy="256" r="186" fill="none" stroke="rgba(201,168,76,0.30)" stroke-width="6"/>
+
+  <!-- Q letter -->
+  <text
+    x="256"
+    y="345"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="300"
+    font-weight="900"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    letter-spacing="-10"
+    filter="drop-shadow(0 4px 16px rgba(0,0,0,0.25))"
+  >Q</text>
+
+  <!-- Gold accent bar -->
+  <rect x="216" y="420" width="80" height="7" rx="4" fill="#C9A84C"/>
+</svg>

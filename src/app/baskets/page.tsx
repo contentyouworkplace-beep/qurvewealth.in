@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import WhatsAppForm from "@/components/WhatsAppForm";
+
+export const metadata: Metadata = {
+  title: "Mutual Fund Baskets India | All Weather, Growth, Smart Debt | Qurve Wealth",
+  description: "Mutual fund baskets India — Qurve Wealth offers quant-driven All Weather, Growth, and Smart Debt mutual fund baskets. AMFI ARN-356292. Invest in the right mutual fund basket for your goals.",
+  keywords: ["mutual fund baskets India", "all weather mutual fund basket", "growth mutual fund basket", "smart debt mutual fund", "quant mutual fund India"],
+  alternates: { canonical: "https://qurvewealth.in/baskets" },
+  openGraph: {
+    title: "Mutual Fund Baskets India | All Weather, Growth, Smart Debt | Qurve Wealth",
+    description: "Mutual fund baskets India — quant-driven All Weather, Growth, and Smart Debt baskets by Qurve Wealth (AMFI ARN-356292).",
+    url: "https://qurvewealth.in/baskets",
+  },
+};
 
 const baskets = [
   {
@@ -124,7 +138,7 @@ export default function BasketsPage() {
           </p>
 
           {/* Jump links */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-10">
             {baskets.map(b => (
               <a
                 key={b.id}
@@ -134,6 +148,9 @@ export default function BasketsPage() {
                 {b.icon} {b.name}
               </a>
             ))}
+          </div>
+          <div className="max-w-sm">
+            <WhatsAppForm light />
           </div>
         </div>
       </section>
